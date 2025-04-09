@@ -200,6 +200,7 @@ h1 {
         grid-template-areas:
             'header'
             'content1'
+	    'message'
             'right'
             'content2'
             'content3';
