@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2.5em;
+    background-color: #3540bd;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+.jugadores {
+    grid-area: content1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #e0e7ff;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.jugador,
+.tituloJugadores {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    justify-content: space-between;
+}
+
+.jugador {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.jugador.activo {
+    background-color: #e93434;
+    color: white;
+
+    font-size: 150%;
+    box-shadow: 0 0 10px #fcff4a;
+    transition: all 0.5s ease;
+  }
+
+  .jugador.activo .marcador {
+    color: white;
+    font-size: 100%;
+}
+
+.editar-nombre {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.editar-nombre img {
+    width: 32px;
+    height: auto;
+}
+
+.nombre {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.marcador {
+    font-size: 1.5em;
+    color: #4f46e5;
+}
+
+.opciones {
+    grid-area: content2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.opciones button,
+.reiniciar button {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.opciones button:hover,
+.reiniciar button:hover {
+    background-color: #4338ca;
+}
+
+#smg {
+    font-size: 2em;
+    color: #111827;
+}
+
+.tablero {
+    grid-area: right;
+    display: grid;
+    grid-template-columns: repeat(3, 180px);
+    grid-template-rows: repeat(3, 180px);
+    justify-content: center;
+    align-content: center;
+    gap: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.celda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-top: 5px solid #000;
+    border-right: 5px solid #000;
+}
+
+.celda:hover {
+    background-color: #e0e7ff;
+}
+
+.celda:nth-child(3n) {
+    border-right: none; /* borde derecho solo para la 3ra columna */
+}
+
+.celda:nth-child(1),
+.celda:nth-child(2),
+.celda:nth-child(3) {
+    border-top: none;
+}
+
+.celda.ganadora {
+    background-color: #4338ca; /* verde brillante */
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.reiniciar {
+    grid-area: content3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        'header header header'
+        'content1 right right'
+        'content2 right right'
+        'content3 right right';
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+@keyframes example {
+    from {background-color: #3540bd;}
+    to {background-color: rgb(210, 219, 30);}
+  }
+
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            'header'
+            'content1'
+            'right'
+            'content2'
+            'content3';
+        grid-template-columns: 1fr;
+    }
+
+    .tablero {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .celda {
+        font-size: 4em;
+    }
+
+    .jugadores {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .tablero {
+        grid-template-columns: repeat(3, 130px);
+        grid-template-rows: repeat(3, 130px);
+    }
+
+    .celda {
+        font-size: 4em;
+    }
+
+    .jugadores {
+        margin: 0;
+    }
+}
