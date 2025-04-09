@@ -175,12 +175,19 @@ h1 {
     display: grid;
     grid-template-areas:
         'header header header'
+        'content1 message message'
         'content1 right right'
         'content2 right right'
         'content3 right right';
     gap: 10px;
     align-items: center;
     padding: 10px;
+}
+.grid-container > div {
+    text-align: center;
+}
+.mensajexd {
+    grid-area: message;
 }
 
 @keyframes example {
